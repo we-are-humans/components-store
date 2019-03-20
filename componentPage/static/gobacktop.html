@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gobacktop</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+  <link rel="stylesheet" href="css/gobacktop.css">
+</head>
+<body>
+<div class="scrolltop">
+  <section class="list-md-1" id="bar">
+    <div class="list-body">
+      <div class="list-product" :key="index" v-for="(p,index) in products">
+        <div class="img">{{p.ListProImg}}</div>
+        <p class="list-pro1-price"><span class="list-pro-rob">{{p.ListProRob}}</span>￥{{p.ListProPrice}}<small><span>
+                    ￥  {{p.ListProSmall}}</span> {{p.ListDiscount}}折</small>
+        </p>
+        <p class="list-pro-name">
+          {{p.ListBrand}} |
+          {{p.ListProName}}
+        </p>
+      </div>
+    </div>
+  </section>
+  <div class="list-up">
+    <p  @click="goTop" ref="btn"><i class="iconfont" >Go back to top</i></p>
+  </div>
+</div>
+</body>
+</html>
+<script>
+  let timer=null;
+   var goback = new Vue( {
+    el:".scrolltop",
+    data(){
+      return{
+        "isTop": true,
+        "letter": "",
+        "original":false ,
+        "products":[{
+          "ListProImg":"PIC1",
+          "ListProPrice":"916",
+          "ListProRob":"",
+          "ListProSmall":"4580",
+          "ListDiscount":"2",
+          "ListBrand":"test",
+          "ListProName":"test"
+        },
+          {
+            "ListProImg":"PIC2",
+            "ListProPrice":"597",
+            "ListProRob":"",
+            "ListProSmall":"3980",
+            "ListDiscount":"1.5",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC3",
+            "ListProPrice":"820",
+            "ListProRob":"",
+            "ListProSmall":"3280",
+            "ListDiscount":"2.5",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC4",
+            "ListProPrice":"2950",
+            "ListProRob":"",
+            "ListProSmall":"11800",
+            "ListDiscount":"2.5",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC5",
+            "ListProPrice":"528",
+            "ListProRob":"test",
+            "ListProSmall":"2399",
+            "ListDiscount":"0",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC6",
+            "ListProPrice":"418",
+            "ListProRob":"test",
+            "ListProSmall":"2980",
+            "ListDiscount":"0",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC7",
+            "ListProPrice":"1512",
+            "ListProRob":"",
+            "ListProSmall":"5680",
+            "ListDiscount":"2.7",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC8",
+            "ListProPrice":"559",
+            "ListProRob":"",
+            "ListProSmall":"2199",
+            "ListDiscount":"2.5",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC9",
+            "ListProPrice":"679",
+            "ListProRob":"test",
+            "ListProSmall":"2890",
+            "ListDiscount":"0",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC10",
+            "ListProPrice":"359",
+            "ListProRob":"",
+            "ListProSmall":"1028",
+            "ListDiscount":"3.5",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC6",
+            "ListProPrice":"418",
+            "ListProRob":"test",
+            "ListProSmall":"2980",
+            "ListDiscount":"0",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC7",
+            "ListProPrice":"1512",
+            "ListProRob":"",
+            "ListProSmall":"5680",
+            "ListDiscount":"2.7",
+            "ListBrand":"test",
+            "ListProName":"test"
+          },
+          {
+            "ListProImg":"PIC8",
+            "ListProPrice":"559",
+            "ListProRob":"",
+            "ListProSmall":"2199",
+            "ListDiscount":"2.5",
+            "ListBrand":"test",
+            "ListProName":"test"
+          }
+        ]
+      }
+    },
+    methods:{
+      needScroll () {
+        let clientHeight = document.documentElement.clientHeight
+        let obtn = this.$refs.btn
+        console.log(clientHeight)
+        window.onscroll = function () {
+          let osTop = document.documentElement.scrollTop || document.body.scrollTop
+
+          console.log(osTop+"...")
+          if (osTop >=clientHeight) {
+
+            console.log(123)
+            obtn.style.display = "block"
+            obtn.style.opacity = '0.8'
+          } else {
+            obtn.style.opacity = '0'
+            console.log(123)
+          }
+          if (!this.isTop) {
+            clearInterval(timer)
+          }
+          this.isTop = false
+        }
+      },
+      goTop () {
+        timer = setInterval(function () {
+          let osTop = document.documentElement.scrollTop || document.body.scrollTop
+          let ispeed = Math.floor(-osTop / 5)
+          document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed
+          this.isTop = true
+          if (osTop === 0) {
+            clearInterval(timer)
+          }
+        }, 30)
+      }
+    },
+    mounted(){
+      this.needScroll()
+    }
+
+  })
+</script>

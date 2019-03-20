@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./components.css">
+    <link rel="stylesheet" href="./static/js/swiper.min.css">
+    <title>zzui-components</title>
+
+    <style>
+    .Frame-header-left a span{
+        margin-left: 20px;
+        font-size:30px;
+    }
+    .Frame-header{
+        border-bottom: 1px solid #686a6d;
+    } 
+    
+    </style>
+</head>
+<body>
+    <div class="Frame-header">
+        <div class="Frame-header-left">
+          <a href="#">
+          
+          <span class="version">ELIG</span>  </a>
+        </div>
+        <div class="Frame-header-right">
+          <ul>
+            <li>
+              <a  href="../yang1/index.html"> 首页</a>
+            </li>
+            <li>
+                <a href="#"> 组件</a>
+            </li>
+            <li>
+                <a href=".."> 移动端展示</a>
+            </li>
+            <li>
+                <a href="../pc/si.html"> pc端展示</a>
+            </li>
+            <li>
+                <a href="../Echarts/sunburst-book.html"> 大数据展示</a>
+            </li>
+            <li>
+              <a class="iconfont icon-github frameHeaderIcon" href="#"  ></a>
+            </li>
+          </ul>
+        </div>
+    </div>
+    <!--侧边栏-->
+    <aside class="g-aside">
+        <ul class="aside-memu1">
+            <li class="aside-menu-list1"><a href="javascript:;">
+            <p>目录</p>
+            <sapn class="translate"></sapn>
+            </a>
+            <ul class="hide-menu1 hide1">
+                <li class="active"><a href="#yanshi" >组件演示</a></li>
+                <li><a href="#shiyong" >使用方法</a ></li>
+                <li><a href="#api" >API</a ></li>
+                
+            </ul>
+            </li>
+        </ul>
+        <ul class="aside-memu">
+            <li class="aside-menu-list" :key="index" v-for="(list,index) in menuList">
+                <a href="javascript:;">
+                    <p v-cloak>{{list.menuName}}</p>
+                    <span class="translate"></span>
+                </a>
+                <!--下拉菜单1-->
+                <ul class="hide-menu hide1">
+                    <li  v-bind:class="{active:index == isActive}" @click="checkItem(lis,index)"   :key="index" v-for="(lis,index) in list.hideMenu">
+                    <a :href="'#'+lis.comName" v-cloak  @click="changeCenter(lis.comName)">{{lis.hideTitle}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- 中间对应显示 -->
+        <div class="introduce">
+            <a name="one">
+                <div class="introduce-left">
+                <div class="introduce-special quick-start">
+                    <a name="yanshi">
+                        <h1  name="yanshi">侧边栏菜单</h1>
+                        <iframe src="./static/asidemenu.html" frameborder="0" style="height:250px;"></iframe>
+                        <p>作用：对各个子选项进行分类显示</p>
+                        <h1>代码展示</h1>
+                    </a>
+                    
+                    <a name="shiyong">
+                        <pre v-highlight-a class="pre">
+                            <h2 name="shiyong">使用指南</h2>
+                            <code>{{code1}}</code>
+                            </pre>
+                        <pre v-highlight-a class="pre">
+                            <h2>基础用法</h2>
+                            <code>{{code2}}</code>
+                            </pre>
+                        <pre v-highlight-a class="pre">
+                            <h2 class="codeTitle">数据结构</h2>
+                            <code>{{code3}}</code>
+                        </pre>
+                    </a>
+                    
+                    <a name="api">
+                        <pre v-highlight-a class="pre" >
+                            <h2   >API</h2>
+                            <code>
+                            <table cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th>参数</th>
+                                    <th>说明</th>
+                                    <th>类型</th>
+                                    <th>默认值</th>
+                                    <th>版本</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr :key="index" v-for="(tr,index) in tableInfo">
+                                <td>{{tr.params}}</td>
+                                <td>{{tr.description}}</td>
+                                <td>{{tr.type}}</td>
+                                <td>{{tr.default}}</td>
+                                <td>{{tr.version}}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </code>
+                        </pre>
+                    </a>
+                </div>
+                </div>
+                <aside-menu-app></aside-menu-app>
+            </a>
+            <a name="two">
+                <div class="introduce-left">
+                <div class="introduce-special quick-start">
+                    <h1>pop弹出框</h1>
+                    <iframe src="./static/popbubble.html" frameborder="0" style="height:250px;"></iframe>
+                    <p>作用：对用户想要购买的物品进行尺码选择后，弹出相应尺码信息</p>
+                    <h1>代码展示</h1>
+                    <pre v-highlight-a class="pre">
+                        <h2>使用指南</h2>
+                        <code>{{code4}}</code>
+                        </pre>
+                    <pre v-highlight-a class="pre">
+                        <h2>基础用法</h2>
+                        <code>{{code5}}</code>
+                        </pre>
+                    <pre v-highlight-a class="pre">
+                        <h2 class="codeTitle">数据结构</h2>
+                        <code>{{code6}}</code>
+                        </pre>
+                    <pre v-highlight-a class="pre">
+                        <h2>API</h2>
+                        <code>
+                            <table cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th>参数</th>
+                                    <th>说明</th>
+                                    <th>类型</th>
+                                    <th>默认值</th>
+                                    <th>版本</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr :key="index" v-for="(tr,index) in tableInfo1">
+                                <td>{{tr.params}}</td>
+                                <td>{{tr.description}}</td>
+                                <td>{{tr.type}}</td>
+                                <td>{{tr.default}}</td>
+                                <td>{{tr.version}}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </code>
+                        </pre>
+                </div>
+                </div>
+                <pop-bubble-app></pop-bubble-app>
+            </a>
+            <a name="three">
+                <div class="introduce-left">
+                <div class="introduce-special quick-start">
+                    <h1>回到顶部</h1>
+                    <iframe src="./static/gobacktop.html" frameborder="0" style="height:250px;"></iframe>
+                    <p>作用：页面滚动较长时点击UP按钮快速回到顶部</p>
+                    <h1>代码展示</h1>
+                    <pre v-highlight-a class="pre">
+                        <h2>使用指南</h2>
+                        <code>{{code7}}</code>
+                        </pre>
+                    <pre v-highlight-a class="pre">
+                        <h2>基础用法</h2>
+                        <code>{{code8}}</code>
+                        </pre>
+                    <pre v-highlight-a class="pre">
+                        <!--<h2 class="codeTitle">基础用法</h2>-->
+                        <code>{{code9}}</code>
+                        </pre>
+                    <pre v-highlight-a class="pre">
+                        <h2>API</h2>
+                        <code>
+                            <table cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th>参数</th>
+                                    <th>说明</th>
+                                    <th>类型</th>
+                                    <th>默认值</th>
+                                    <th>版本</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr :key="index" v-for="(tr,index) in tableInfo2">
+                                <td>{{tr.params}}</td>
+                                <td>{{tr.description}}</td>
+                                <td>{{tr.type}}</td>
+                                <td>{{tr.default}}</td>
+                                <td>{{tr.version}}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </code>
+                        </pre>
+                    <pre v-highlight-a class="pre">
+                        <h2>Event</h2>
+                        <code>
+                            <table cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th>事件名</th>
+                                    <th>说明</th>
+                                    <th>参数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr :key="index" v-for="(tr,index) in eventInfo">
+                                <td>{{tr.eventname}}</td>
+                                <td>{{tr.description}}</td>
+                                <td>{{tr.params}}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </code>
+                        </pre>
+                </div>
+                </div>
+                <go-back-to-top-app></go-back-to-top-app>
+            </a>
+            <a name="four">
+                    <div class="introduce-left">
+                    <div class="introduce-special quick-start">
+                        <h1>购物车</h1>
+                        <iframe src="./static/SmlShopCart.html" frameborder="0" style="height:250px;"></iframe>
+                        <p>作用：购物车中商品选择效果</p>
+                        <h1>代码展示</h1>
+                        <pre v-highlight-a class="pre">
+                            <h2>使用指南</h2>
+                            <code>{{code10}}</code>
+                            </pre>
+                        <pre v-highlight-a class="pre">
+                            <h2>基础用法</h2>
+                            <code>{{code11}}</code>
+                            </pre>
+                        <pre v-highlight-a class="pre">
+                            <!--<h2 class="codeTitle">基础用法</h2>-->
+                            <code>{{code12}}</code>
+                            </pre>
+                        <pre v-highlight-a class="pre">
+                            <h2>API</h2>
+                            <code>
+                                <table cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr>
+                                        <th>参数</th>
+                                        <th>说明</th>
+                                        <th>类型</th>
+                                        <th>默认值</th>
+                                        <th>版本</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="index" v-for="(tr,index) in tableInfo3">
+                                    <td>{{tr.params}}</td>
+                                    <td>{{tr.description}}</td>
+                                    <td>{{tr.type}}</td>
+                                    <td>{{tr.default}}</td>
+                                    <td>{{tr.version}}</td>
+                                </tr>
+                                </tbody>
+                                </table>
+                            </code>
+                            </pre>
+                        <pre v-highlight-a class="pre">
+                            <h2>Event</h2>
+                            <code>
+                                <table cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr>
+                                        <th>事件名</th>
+                                        <th>说明</th>
+                                        <th>参数</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="index" v-for="(tr,index) in eventInfo">
+                                    <td>{{tr.eventname}}</td>
+                                    <td>{{tr.description}}</td>
+                                    <td>{{tr.params}}</td>
+                                </tr>
+                                </tbody>
+                                </table>
+                            </code>
+                            </pre>
+                    </div>
+                    </div>
+                    <go-back-to-top-app></go-back-to-top-app>
+            </a>
+            <a name="five">
+            <div class="introduce-left">
+                <div class="introduce-special quick-start">
+                    <h1>横向轮播图</h1>
+                    <!-- Swiper -->
+                        <div class="swiper-container swiperRow">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" ><img width="600px" height="340px" src="./static/image/banner.png" alt=""></div>
+                                <div class="swiper-slide" ><img width="600px" height="340px" src="./static/image/slider01.png" alt=""></div>
+                                <div class="swiper-slide" ><img width="600px" height="340px" src="./static/image/slider02.png" alt=""></div>
+                                <div class="swiper-slide" ><img width="600px" height="340px" src="./static/image/slider03.png" alt=""></div>
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    <p class="lookout">作用：更加直观明了地显示数据，如商品信息等，并且在各大网站都会使用到焦点轮播图，因为它占用地方少，交互性好。</p>
+                    <h2>使用指南</h2>
+                    <pre v-highlight-a class="pre">
+                    <code>{{download}}</code>
+                    </pre>
+                    <h2>基础用法</h2>
+                    <pre v-highlight-a class="pre">
+                    <code>{{code13}}</code>
+                    </pre>
+                    <h2>数据结构</h2>
+                    <pre v-highlight-a class="pre last" >
+                    <code>{{code14}}</code>
+                    </pre>
+                    <h2>API</h2>
+                    <pre v-highlight-a class="pre">
+                        <code>
+                            <table cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th>参数</th>
+                                    <th>说明</th>
+                                    <th>类型</th>
+                                    <th>默认值</th>
+                                    <th>版本</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr :key="index" v-for="(tr,index) in tableInfo4">
+                                <td>{{tr.params}}</td>
+                                <td>{{tr.description}}</td>
+                                <td>{{tr.type}}</td>
+                                <td>{{tr.default}}</td>
+                                <td>{{tr.version}}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </code>
+                        </pre>
+                </div>
+                </div>
+                
+            </a>
+        </div>
+
+        
+
+    </aside>
+    <script src="./static/js/vue.min.js"></script>
+    <script src="./static/js/jquery-1.9.1.min.js"></script>
+    <script src="./static/js/swiper.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el:".g-aside",
+            data:{
+                "currentShow":"one",
+                "menuList":[
+                {
+                    "menuName":"官方组件",
+                    
+                    "hideMenu":[
+                    {
+                        "hideTitle":"侧边栏",
+                        "comName":"one"
+                    },
+                    
+                    {
+                        "hideTitle":"pop弹出框",
+                        "comName":"two"
+                    },
+                    {
+                        "hideTitle":"回到顶部",
+                        "comName":"three"
+                    },
+                    {
+                        "hideTitle":"购物车组件",
+                        "comName":"four"
+                    },
+                    {
+                        "hideTitle":"倒计时",
+                        "route":"/Frame/CountDown"
+                    },
+                    {
+                        "hideTitle":"rate星星评分",
+                        "route":"/Frame/StarRating"
+                    }
+                    ]
+                },
+                {
+                    "menuName":"第三方组件",
+                    "hideMenu":[
+                    {
+                        "hideTitle":"横向滑动",
+                        "comName":"five"
+                    }
+                    ]
+                }
+                ],
+                
+                isActive:0,
+                tableInfo:[
+                    {
+                    params:"show",
+                    description:"是否显示",
+                    type:"Boolean",
+                    default:"false",
+                    version:"1.0.0"
+                    },
+                    {
+                    params:"menuList",
+                    description:"菜单列表",
+                    type:"Array",
+                    default:" -",
+                    version:"1.0.0"
+                    },
+                    {
+                    params:"i",
+                    description:"小图标",
+                    type:"String",
+                    default:" -",
+                    version:"1.0.0"
+                    },
+                    {
+                    params:"menuName",
+                    description:"一级菜单名",
+                    type:"String",
+                    default:"一级菜单",
+                    version:"1.0.0"
+                    },
+                    {
+                    params:"menuListNum",
+                    description:"此一级菜单下二级菜单数量",
+                    type:"Number",
+                    default:"0",
+                    version:"1.0.0"
+                    },
+                    {
+                    params:"hideMenu",
+                    description:"二级菜单集",
+                    type:"Array",
+                    default:" -",
+                    version:"1.0.0"
+                    },
+                    {
+                    params:"hideTitle",
+                    description:"二级菜单名",
+                    type:"String",
+                    default:"二级菜单",
+                    version:"1.0.0"
+                    },
+                    {
+                    params:"route",
+                    description:"二级菜单的链接地址",
+                    type:"String",
+                    default:" -",
+                    version:"1.0.0"
+                    },
+                ],
+                code1:
+                    "import zzui from 'zzui'\n" +
+                    "Vue.use(zzui)\n",
+                code2:
+                    ' <aside-menu\n' +
+                    '      :show="show"\n' +
+                    '      :menuList="menuList"\n' +
+                    '  >\n' +
+                    ' <aside-menu/>',
+                code3:
+                    'export default {\n' +
+                    '        name: "AsideMenu",\n' +
+                    '      component:{AsideMenu},\n' +
+                    '      data(){\n' +
+                    '        return{\n' +
+                    '          show:false,\n' +
+                    '          "menuList":[\n' +
+                    '            {\n' +
+                    '              "i":"iconfont icon-book",\n' +
+                    '              "menuName":"一级菜单",\n' +
+                    '              "menuListNum":"2",\n' +
+                    '              "hideMenu":[\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/EditableTable"\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/ShopBrand"\n' +
+                    '                }\n' +
+                    '              ]\n' +
+                    '            },\n' +
+                    '            {\n' +
+                    '              "i":"iconfont icon-cogs",\n' +
+                    '              "menuName":"一级菜单",\n' +
+                    '              "menuListNum":"4",\n' +
+                    '              "hideMenu":[\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/SaleManagement"\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/SaleActivityList"\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/SuperGift"\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":""\n' +
+                    '                }\n' +
+                    '              ]\n' +
+                    '            },\n' +
+                    '            {\n' +
+                    '              "i":"iconfont icon-tasks",\n' +
+                    '              "menuName":"一级菜单",\n' +
+                    '              "menuListNum":"4",\n' +
+                    '              "hideMenu":[\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/OrderList"\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/OrderInquiry"\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":""\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":""\n' +
+                    '                }\n' +
+                    '              ]\n' +
+                    '            },\n' +
+                    '            {\n' +
+                    '              "i":"iconfont icon-th",\n' +
+                    '              "menuName":"一级菜单",\n' +
+                    '              "menuListNum":"3",\n' +
+                    '              "hideMenu":[\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/viplist"\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/addvip"\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/Gallery"\n' +
+                    '                }\n' +
+                    '              ]\n' +
+                    '            },\n' +
+                    '            {\n' +
+                    '              "i":"iconfont icon-fire",\n' +
+                    '              "menuName":"一级菜单",\n' +
+                    '              "menuListNum":"3",\n' +
+                    '              "hideMenu":[\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":""\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":""\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/"\n' +
+                    '                }\n' +
+                    '              ]\n' +
+                    '            },\n' +
+                    '            {\n' +
+                    '              "i":"iconfont icon-trophy",\n' +
+                    '              "menuName":"一级菜单",\n' +
+                    '              "menuListNum":"3",\n' +
+                    '              "hideMenu":[\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":""\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":""\n' +
+                    '                },\n' +
+                    '                {\n' +
+                    '                  "hideTitle":"二级菜单",\n' +
+                    '                  "route":"/BasicTable"\n' +
+                    '                }\n' +
+                    '              ]\n' +
+                    '            }\n' +
+                    '          ]\n' +
+                    '      }\n',
+                tableInfo1:[
+                        {
+                        params:"showchose",
+                        description:"",
+                        type:"Boolean",
+                        default:"false",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"num",
+                        description:"",
+                        type:"Number",
+                        default:"-1",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"isShow",
+                        description:"",
+                        type:"Boolean",
+                        default:"false",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"allSize",
+                        description:"总尺码",
+                        type:"Array",
+                        default:"Object",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"size",
+                        description:"尺码",
+                        type:"String",
+                        default:"M(160)",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"shoulder",
+                        description:"肩宽",
+                        type:"String",
+                        default:"40",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"chest",
+                        description:"胸围",
+                        type:"String",
+                        default:"101",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"clothLength",
+                        description:"衣长",
+                        type:"String",
+                        default:"96",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"outsideSleeve",
+                        description:"袖长",
+                        type:"String",
+                        default:"60",
+                        version:"1.0.0"
+                        },
+                    ],
+                code4:
+                    "import zzui from 'zzui'\n" +
+                    "Vue.use(zzui)\n",
+                code5:
+                    ' <pop-bubble\n' +
+                    '      :showchose="showchose"\n' +
+                    '      :num="num"\n'+
+                    '      :isShow="isShow"\n'+
+                    '      :allSize="allSize"\n'+
+                    '  >\n' +
+                    ' </pop-bubble>',
+                code6:
+                    'export default {\n' +
+                    '        name: "PopBubble",\n' +
+                    '        data() {\n' +
+                    '          return {\n' +
+                    '            showchose: false,\n' +
+                    '            num: -1,\n' +
+                    '            isShow: false,\n' +
+                    '            allSize: [\n' +
+                    '              {\n' +
+                    '                size: "M(160)",\n' +
+                    '                shoulder: "40",\n' +
+                    '                chest: "101",\n' +
+                    '                clothLength: "96",\n' +
+                    '                outsideSleeve: "60"\n' +
+                    '              },\n' +
+                    '              {\n' +
+                    '                size: "L(165)",\n' +
+                    '                shoulder: "41",\n' +
+                    '                chest: "105",\n' +
+                    '                clothLength: "97",\n' +
+                    '                outsideSleeve: "61"\n' +
+                    '              },\n' +
+                    '              {\n' +
+                    '                size: "XL(170)",\n' +
+                    '                shoulder: "42",\n' +
+                    '                chest: "109",\n' +
+                    '                clothLength: "98",\n' +
+                    '                outsideSleeve: "62"\n' +
+                    '              },\n' +
+                    '              {\n' +
+                    '                size: "2XL(175)",\n' +
+                    '                shoulder: "43",\n' +
+                    '                chest: "113",\n' +
+                    '                clothLength: "98",\n' +
+                    '                outsideSleeve: "63"\n' +
+                    '              }\n' +
+                    '            ]\n' +
+                    '          }\n' +
+                    '        },\n' +
+                    '        mounted(){\n' +
+                    '          $(".popClose").click(function(){\n' +
+                    '            $(".popTable").css({\n' +
+                    '              "display":"none",\n' +
+                    '            })\n' +
+                    '            $(this).css({"display":"none"})\n' +
+                    '          });\n' +
+                    '        },\n' +
+                    '        methods: {\n' +
+                    '          changeSize: function (index) {\n' +
+                    '            this.num = index\n' +
+                    '            console.log(this.num)\n' +
+                    '            let popTable = document.getElementsByClassName("popTable")\n' +
+                    '            if(index==3){\n' +
+                    '            }\n' +
+                    '            let popClose = document.getElementsByClassName("popClose")\n' +
+                    '            popClose[0].style.display = "block"\n' +
+                    '            let domobj = document.getElementById("detail-size-body-size");\n' +
+                    '            let lis = domobj.children;\n' +
+                    '            if(lis){\n' +
+                    '              for(let i=0; i<lis.length; i++){\n' +
+                    '                lis[i].index = i;\n' +
+                    '                lis[i].onclick = li_click\n' +
+                    '              }\n' +
+                    '              function li_click(){\n' +
+                    '                for(let j=0; j<lis.length; j++){\n' +
+                    '                  lis[j].style.backgroundColor = "#fff"\n' +
+                    '                  lis[j].style.borderColor="#d7d7d7"\n' +
+                    '                  lis[j].style.color="#19100c"\n' +
+                    '                }\n' +
+                    '                this.style.borderColor = "#dd3d97"\n' +
+                    '                this.style.color="#dd3d97"\n' +
+                    '              }\n' +
+                    '            }\n' +
+                    '          }\n' +
+                    '        }\n' +
+                    '    }',
+                    tableInfo2:[
+                        {
+                        params:"products",
+                        description:"test",
+                        type:"Array",
+                        default:"Object",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"test",
+                        description:"test",
+                        type:"String",
+                        default:"list-6-1.jpg",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"ListProPrice",
+                        description:"test",
+                        type:"Number",
+                        default:"test",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"ListProRob",
+                        description:"test",
+                        type:"string",
+                        default:"-",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"ListProSmall",
+                        description:"test",
+                        type:"Number",
+                        default:"test",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"ListDiscount",
+                        description:"test",
+                        type:"Number",
+                        default:"2",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"test",
+                        description:"test",
+                        type:"Number",
+                        default:"test",
+                        version:"1.0.0"
+                        },
+                        {
+                        params:"ListProName",
+                        description:"商品名称",
+                        type:"String",
+                        default:"test",
+                        version:"1.0.0"
+                        },
+                    ],
+                    eventInfo:[
+                        {
+                        eventname:"click-up",
+                        description:"点击按钮触发",
+                        params:"-"
+                        }
+                    ],
+                    code7:
+                        "import zzui from 'zzui'\n" +
+                        "Vue.use(zzui)\n",
+                    code8:
+                        "  <go-back-to-top\n" +
+                        "    :isTop=\"isTop\"\n" +
+                        "    :letter=\"letter\"\n" +
+                        "    :original=\"original\"\n" +
+                        "    :products=\"products\"\n" +
+                        "  >\n" +
+                        "  </go-back-to-top>",
+                    code9:
+                    'data(){\n' +
+                        '      return{\n' +
+                        '        "products":[{\n' +
+                        '          "ListProImg":"PIC1",\n' +
+                        '          "ListProPrice":"916",\n' +
+                        '          "ListProRob":"",\n' +
+                        '          "ListProSmall":"4580",\n' +
+                        '          "ListDiscount":"2",\n' +
+                        '          "ListBrand":"test",\n' +
+                        '          "ListProName":"test"\n' +
+                        '        },\n' +
+                        '          {\n' +
+                        '            "ListProImg":"PIC9",\n' +
+                        '            "ListProPrice":"679",\n' +
+                        '            "ListProRob":"test",\n' +
+                        '            "ListProSmall":"2890",\n' +
+                        '            "ListDiscount":"0",\n' +
+                        '            "ListBrand":"test",\n' +
+                        '            "ListProName":"test"\n' +
+                        '          },\n' +
+                        '          {\n' +
+                        '            "ListProImg":"PIC10",\n' +
+                        '            "ListProPrice":"359",\n' +
+                        '            "ListProRob":"",\n' +
+                        '            "ListProSmall":"1028",\n' +
+                        '            "ListDiscount":"3.5",\n' +
+                        '            "ListBrand":"test",\n' +
+                        '            "ListProName":"test"\n' +
+                        '          },\n' +
+                        '          {\n' +
+                        '            "ListProImg":"PIC6",\n' +
+                        '            "ListProPrice":"418",\n' +
+                        '            "ListProRob":"test",\n' +
+                        '            "ListProSmall":"2980",\n' +
+                        '            "ListDiscount":"0",\n' +
+                        '            "ListBrand":"test",\n' +
+                        '            "ListProName":"test"\n' +
+                        '          },\n' +
+                        '          {\n' +
+                        '            "ListProImg":"PIC7",\n' +
+                        '            "ListProPrice":"1512",\n' +
+                        '            "ListProRob":"",\n' +
+                        '            "ListProSmall":"5680",\n' +
+                        '            "ListDiscount":"2.7",\n' +
+                        '            "ListBrand":"test",\n' +
+                        '            "ListProName":"test"\n' +
+                        '          },\n' +
+                        '          {\n' +
+                        '            "ListProImg":"PIC8",\n' +
+                        '            "ListProPrice":"559",\n' +
+                        '            "ListProRob":"",\n' +
+                        '            "ListProSmall":"2199",\n' +
+                        '            "ListDiscount":"2.5",\n' +
+                        '            "ListBrand":"test",\n' +
+                        '            "ListProName":"test"\n' +
+                        '          },\n' +
+                        '          {\n' +
+                        '            "ListProImg":"PIC9",\n' +
+                        '            "ListProPrice":"679",\n' +
+                        '            "ListProRob":"test",\n' +
+                        '            "ListProSmall":"2890",\n' +
+                        '            "ListDiscount":"0",\n' +
+                        '            "ListBrand":"test",\n' +
+                        '            "ListProName":"test"\n' +
+                        '          },\n' +
+                        '          {\n' +
+                        '            "ListProImg":"PIC10",\n' +
+                        '            "ListProPrice":"359",\n' +
+                        '            "ListProRob":"",\n' +
+                        '            "ListProSmall":"1028",\n' +
+                        '            "ListDiscount":"3.5",\n' +
+                        '            "ListBrand":"test",\n' +
+                        '            "ListProName":"test"\n' +
+                        '          }\n' +
+                        '        ]\n' +
+                        '      }\n' +
+                        '    },\n' +
+                        '    methods:{\n' +
+                        '      needScroll () {\n' +
+                        '        let clientHeight = document.documentElement.clientHeight\n' +
+                        '        let obtn = this.$refs.btn\n' +
+                        '        console.log(clientHeight)\n' +
+                        '        window.onscroll = function () {\n' +
+                        '          let osTop = document.documentElement.scrollTop || document.body.scrollTop\n' +
+                        '\n' +
+                        '          console.log(osTop+"...")\n' +
+                        '          if (osTop >=clientHeight) {\n' +
+                        '\n' +
+                        '            console.log(123)\n' +
+                        '            obtn.style.opacity = \'0.8\'\n' +
+                        '          } else {\n' +
+                        '            obtn.style.opacity = \'0\'\n' +
+                        '            console.log(123)\n' +
+                        '          }\n' +
+                        '          if (!this.isTop) {\n' +
+                        '            clearInterval(timer)\n' +
+                        '          }\n' +
+                        '          this.isTop = false\n' +
+                        '        }\n' +
+                        '      },\n' +
+                        '      goTop () {\n' +
+                        '        timer = setInterval(function () {\n' +
+                        '          let osTop = document.documentElement.scrollTop || document.body.scrollTop\n' +
+                        '          let ispeed = Math.floor(-osTop / 5)\n' +
+                        '          document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed\n' +
+                        '          this.isTop = true\n' +
+                        '          if (osTop === 0) {\n' +
+                        '            clearInterval(timer)\n' +
+                        '          }\n' +
+                        '        }, 30)\n' +
+                        '      }\n' +
+                        '    },\n' +
+                        '    mounted(){\n' +
+                        '      this.needScroll()\n' +
+                        '    }',
+                        tableInfo3:[
+                            {
+                            params:"shopcartproductImg",
+                            description:"test",
+                            type:"String",
+                            default:"shopcart-product-01.jpg",
+                            version:"1.0.0"
+                            },
+                            {
+                            params:"shopcartproductDescribe",
+                            description:"test",
+                            type:"String",
+                            default:"test | test",
+                            version:"1.0.0"
+                            },
+                            {
+                            params:"shopcartproductBrand",
+                            description:"品牌",
+                            type:"String",
+                            default:"test",
+                            version:"1.0.0"
+                            },
+                            {
+                            params:"shopcartproductSize",
+                            description:"test",
+                            type:"String",
+                            default:"M",
+                            version:"1.0.0"
+                            },
+                            {
+                            params:"shopcartproductDecrease",
+                            description:"test",
+                            type:"String",
+                            default:"test",
+                            version:"1.0.0"
+                            },
+                            {
+                            params:"shopcartproductCurrPrice",
+                            description:"test",
+                            type:"Number",
+                            default:"17test89",
+                            version:"1.0.0"
+                            },
+                            {
+                            params:"shopcartproductOriPrice",
+                            description:"test",
+                            type:"Number",
+                            default:"test",
+                            version:"1.0.0"
+                            },
+                            {
+                            params:"number",
+                            description:"test",
+                            type:"Number",
+                            default:"1",
+                            version:"1.0.0"
+                            }
+                        ],
+                        code10:
+            "import zzui from 'zzui'\n" +
+            "Vue.use(zzui)\n",
+          code11:
+            ' <sml-shop-cart\n' +
+            '      :shopcartproduct="shopcartproduct"\n' +
+            '  >\n' +
+            ' </>',
+          code12:
+            'export default {\n' +
+            '        name: "SmlShopCart",\n' +
+            '        component:{SmlShopCartFont},\n' +
+            '        mounted(){\n' +
+            '          $(".shopcart-product-box").each(function () {\n' +
+            '            $(this).children(".shopcart-product-num-box").children(".shopcart-product-nums").children(".icon-close-icon").click(function(){\n' +
+            '              $(this).parent(".shopcart-product-nums").parent(".shopcart-product-num-box").parent(".shopcart-product-box").remove();\n' +
+            '            })\n' +
+            '          })\n' +
+            '        },\n' +
+            '      data(){\n' +
+            '        return {\n' +
+            '          shopcartproduct:[\n' +
+            '            {\n' +
+            '              "shopcartproductImg":"../static/image/shopcart-product-01.jpg",\n' +
+            '              "shopcartproductDescribe":"test | test",\n' +
+            '              "shopcartproductBrand":"test",\n' +
+            '              "shopcartproductSize":"M",\n' +
+            '              "shopcartproductDecrease":"test",\n' +
+            '              "shopcartproductCurrPrice":"test",\n' +
+            '              "shopcartproductOriPrice":"test",\n' +
+            '              "number":"1"\n' +
+            '            },\n' +
+            '            {\n' +
+            '              "shopcartproductImg":"../static/image/shopcart-product-02.jpg",\n' +
+            '              "shopcartproductDescribe":"test | test",\n' +
+            '              "shopcartproductBrand":"test",\n' +
+            '              "shopcartproductSize":"M",\n' +
+            '              "shopcartproductDecrease":"test",\n' +
+            '              "shopcartproductCurrPrice":"test",\n' +
+            '              "shopcartproductOriPrice":"test",\n' +
+            '              "number":"1"\n' +
+            '            }\n' +
+            '          ]\n' +
+            '        }\n' +
+            '      },\n' +
+            '      methods: {\n' +
+            '        add(pid){\n' +
+            '          this.shopcartproduct[pid].number++;\n' +
+            '        },\n' +
+            '        subtract(pid){\n' +
+            '          if( this.shopcartproduct[pid].number <=1){\n' +
+            '            this.shopcartproduct[pid].number =1\n' +
+            '          } else{\n' +
+            '            this.shopcartproduct[pid].number--;\n' +
+            '          }\n' +
+            '        },\n' +
+            '      }\n' +
+            '    }',
+            download:
+            "import zzui from zzui\n" +
+            "Vue.use(zzui)",
+            code13:
+            " <swiper-row></swiper-row>\n" ,
+            tableInfo4:[
+              {
+                params:"swiperRow",
+                description:"存放轮播图的容器",
+                type:"Dom元素",
+                default:"-",
+                version:"1.0.0"
+              },
+              {
+                params:"autoplay",
+                description:"是否自动播放",
+                type:"Boolean",
+                default:"false",
+                version:"1.0.0"
+              },
+              {
+                params:"loop",
+                description:"是否循环播放",
+                type:"Boolean",
+                default:"true",
+                version:"1.0.0"
+              },
+              {
+                params:"clickable",
+                description:"点击分页器指示点控制swiper切换",
+                type:"Boolean",
+                default:"true",
+                version:"1.0.0"
+              }
+            ],
+            code14:
+            "import SwiperCss from \"../../../node_modules/swiper/dist/css/swiper.css\";\n" +
+              "    import Swiper from \"swiper\";\n" +
+              "    export default {\n" +
+              "        name: \"SwiperRowApp\",\n" +
+              "        components:{SwiperCss},\n" +
+              "        mounted(){\n" +
+              "          var swiper = new Swiper('.swiperRow', {\n" +
+              "            pagination: {\n" +
+              "              el: '.swiper-pagination'\n" +
+              "            },\n" +
+              "            autoplay:true,\n" +
+              "            loop:true,\n" +
+              "            clickable:true\n" +
+              "          });\n" +
+              "        }\n" +
+              "    }"
+            },
+            methods:{
+                checkItem(value,index){
+                    this.isActive = index;
+                },
+                changeCenter(value,index){
+                    this.currentShow = value;
+                    console.log(value)
+                }
+            },
+            computed:{
+                showCenter(){
+                    return this.currentShow;
+                }
+            },
+            mounted(){
+        //侧边栏下拉
+            $(".aside-menu-list").each(function (i) {
+            var n = true;
+            $(this).children("a").click(function () {
+                // console.log(i);
+                $(this).next(".hide-menu").slideToggle(500);
+
+                // console.log($(this).next(".hide-menu").children());
+                if (n) {
+                $(this).children(".translate").css({
+                    "transform": "rotate(90deg)"
+
+                });
+                n = !n;
+                } else {
+                $(this).children(".translate").css({
+                    "transform": "rotate(0deg)"
+                });
+                n = !n;
+                }
+
+            })
+            })
+            // 轮播图
+            var swiper = new Swiper('.swiperRow', {
+            pagination: {
+              el: '.swiper-pagination'
+            },
+            autoplay:true,
+            loop:true,
+            clickable:true
+          });
+         }
+    })
+       
+    </script>
+
+</body>
+</html>
